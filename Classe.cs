@@ -26,12 +26,16 @@ namespace HNI_TPmoyennes
         {
             if (eleves.Count < MAXELEVES)
             { eleves.Add(new Eleve(prenom, nom)); }
+            else
+                throw new InvalidOperationException($"Nombre max d'eleves pour la classe {this.nomClasse} atteint");
         }
 
         public void ajouterMatiere(String nom)
         {
             if (matieres.Count < MAXMATIERES)
                { matieres.Add(nom); }
+            else
+                throw new InvalidOperationException($"Nombre max de matieres pour la classe {this.nomClasse} atteinte");
         }
 
         public float moyenneGeneral()
@@ -42,6 +46,9 @@ namespace HNI_TPmoyennes
             {
                 moy += eleve.moyenneGeneral();
             }
+            if (eleves.Count == 0)
+                throw new InvalidOperationException($"{this.nomClasse} n'a pas d'eleve, division par zero");
+
             return MathF.Round(moy / eleves.Count, 2);
 
         }
@@ -53,6 +60,9 @@ namespace HNI_TPmoyennes
             {
                 moyMat += eleve.moyenneMatiere(iMatiere);
             }
+            if (eleves.Count == 0)
+                throw new InvalidOperationException($"{this.nomClasse} n'a pas d'eleve, division par zero");
+
             return MathF.Round(moyMat / eleves.Count, 2);
         }
     }

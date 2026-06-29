@@ -26,6 +26,8 @@ namespace HNI_TPmoyennes
         {
             if (notes.Count < MAXNOTES)
             { notes.Add(note); }
+            else
+                throw new InvalidOperationException($"Nombre max de notes pour l'eleve {this.prenom}{this.nom} atteint");
         }
 
         public float moyenneGeneral()
@@ -36,7 +38,10 @@ namespace HNI_TPmoyennes
             {
                 moy += moyenneMatiere(matiere);
             }
-                return MathF.Round(moy/matieres.Count,2);
+            if (matieres.Count ==0)
+                throw new InvalidOperationException($"{this.prenom} {this.nom} n'a pas de notes, division par zero");
+
+            return MathF.Round(moy/matieres.Count,2);
         }
 
         public float moyenneMatiere(int iMatiere)
@@ -51,6 +56,8 @@ namespace HNI_TPmoyennes
                     nb++;
                 }
             }
+            if (nb == 0)
+                throw new InvalidOperationException($"{this.prenom} {this.nom} n'a pas de note dans la matiere d'indice {iMatiere}, division par zero");
             return MathF.Round(moyMat/nb,2);
         }
     }
