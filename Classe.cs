@@ -13,15 +13,13 @@ namespace HNI_TPmoyennes
         private const int MAXMATIERES = 10;
 
         public String nomClasse {  get; private set; }
-        public List<Eleve> eleves { get; private set; }
-        public List<String> matieres { get; private set; }
+        public List<Eleve> eleves { get; private set; } = new();
+        public List<String> matieres { get; private set; } = new();
 
 
         public Classe(String nom) 
         {
             this.nomClasse = nom;
-            this.eleves = new List<Eleve>();
-            this.matieres = new List<string>();
         }
 
         public void ajouterEleve(String prenom,String nom)
