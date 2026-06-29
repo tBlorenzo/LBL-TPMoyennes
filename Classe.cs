@@ -15,7 +15,6 @@ namespace HNI_TPmoyennes
         public String nomClasse {  get; private set; }
         public List<Eleve> eleves { get; private set; }
         public List<String> matieres { get; private set; }
-        public float Moyenne { get; private set; }
 
 
         public Classe(String nom) 
@@ -23,27 +22,40 @@ namespace HNI_TPmoyennes
             this.nomClasse = nom;
             this.eleves = new List<Eleve>();
             this.matieres = new List<string>();
-            this.Moyenne = 0;
         }
 
         public void ajouterEleve(String prenom,String nom)
         {
-            eleves.Add(new Eleve(prenom,nom));
+            if (eleves.Count < MAXELEVES)
+            { eleves.Add(new Eleve(prenom, nom)); }
         }
 
         public void ajouterMatiere(String nom)
         {
-            matieres.Add(nom);
+            if (matieres.Count < MAXMATIERES)
+               { matieres.Add(nom); }
         }
 
         public float moyenneGeneral()
         {
-            return Moyenne;
+            float moy = 0;
+            
+            foreach (Eleve eleve in eleves)
+            {
+                moy += eleve.moyenneGeneral();
+            }
+            return MathF.Round(moy / eleves.Count, 2);
+
         }
 
-        public float moyenneMatiere(int i)
+        public float moyenneMatiere(int iMatiere)
         {
-            return Moyenne;
+            float moyMat = 0;
+            foreach (Eleve eleve in eleves)
+            {
+                moyMat += eleve.moyenneMatiere(iMatiere);
+            }
+            return MathF.Round(moyMat / eleves.Count, 2);
         }
     }
 }
