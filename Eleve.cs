@@ -9,11 +9,10 @@ namespace HNI_TPmoyennes
     internal class Eleve
     {
 
-        private const int MAXNOTES= 200;
+        private const int MAXNOTES = 200;
 
-        public String prenom {  get; private set; }
-        public String nom {  get; private set; }
-        public float Moyenne { get; private set; }
+        public String prenom { get; private set; }
+        public String nom { get; private set; }
         public List<Note> notes { get; private set; }
 
 
@@ -21,23 +20,39 @@ namespace HNI_TPmoyennes
         {
             this.nom = nom;
             this.prenom = prenom;
-            this.Moyenne = 0;
-            this.notes= new List<Note>();
+            this.notes = new List<Note>();
         }
 
         public void ajouterNote(Note note)
         {
-            notes.Add(note);
+            if (notes.Count < MAXNOTES)
+            { notes.Add(note); }
         }
 
         public float moyenneGeneral()
         {
-            return Moyenne;
+            float moy = 0;
+            var matieres = notes.Select(n => n.matiere).Distinct().ToList();
+            foreach (int matiere in matieres)
+            {
+                moy += moyenneMatiere(matiere);
+            }
+                return MathF.Round(moy/matieres.Count,2);
         }
 
-        public float moyenneMatiere(int i)
+        public float moyenneMatiere(int iMatiere)
         {
-            return Moyenne;
+            int nb = 0;
+            float moyMat = 0;
+            foreach (Note note in notes)
+            {
+                if (note.matiere == iMatiere)
+                {
+                    moyMat += note.note;
+                    nb++;
+                }
+            }
+            return MathF.Round(moyMat/nb,2);
         }
     }
 }
