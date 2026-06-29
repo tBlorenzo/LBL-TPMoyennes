@@ -14,9 +14,9 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\loren\\OneDrive\\Bureau\\Environement\\TPMoy\\LBL-TPMoyennes\\HNI-TPmoyennes.csproj",
-      "projectName": "HNI-TPmoyennes",
-      "projectPath": "C:\\Users\\loren\\OneDrive\\Bureau\\Environement\\TPMoy\\LBL-TPMoyennes\\HNI-TPmoyennes.csproj",
+      "projectUniqueName": "C:\\Users\\loren\\OneDrive\\Bureau\\Environement\\TPMoy\\LBL-TPMoyennes\\LBL-TPmoyennes.csproj",
+      "projectName": "LBL-TPmoyennes",
+      "projectPath": "C:\\Users\\loren\\OneDrive\\Bureau\\Environement\\TPMoy\\LBL-TPMoyennes\\LBL-TPmoyennes.csproj",
       "packagesPath": "C:\\Users\\loren\\.nuget\\packages\\",
       "outputPath": "C:\\Users\\loren\\OneDrive\\Bureau\\Environement\\TPMoy\\LBL-TPMoyennes\\obj\\",
       "projectStyle": "PackageReference",
