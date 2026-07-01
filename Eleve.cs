@@ -13,7 +13,7 @@ namespace LBL_TPmoyennes
 
         public String prenom { get; private set; }
         public String nom { get; private set; }
-        public List<Note> notes { get; private set; } = new();
+        private List<Note> notes { get; private set; } = new();
 
 
         public Eleve(String prenom, String nom)
